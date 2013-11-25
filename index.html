@@ -1,0 +1,74 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+		<link rel="stylesheet" href="jquery.mob.css" />
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+		<script src="jquery.min.js"></script>
+		<script src="jquery.mob.js"></script>
+		<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+		<script src="quest.js"></script>
+	</head>
+	<body>
+		<div data-role="page" id="home" align="center">
+			<div style="width: 400px;" align="left">
+			<div data-role="header" data-position="fixed">
+				<h1> MourneQuest! </h1>
+			</div>
+			
+			<div id="content">
+				<img src="cover.jpg"></img>
+				<p> Jack Turner’s most prized possession, has been snatched away from him and the only way of getting it back has been stolen. </p>
+				<p> He leaves his home in post-famine Ireland and stumbles upon an enchanted realm, long since forgotten by mankind and encounters a creature named Cobs,a kindred spirit, with a wit and wisdom far beyond his youthful appearance.</p>
+				<p> Together they embark on a quest, through the True Kingdom of Mourne; where the strange and wonderful inhabitants both help and hinder their path, rivers hide ancient tales, a mighty wall with a history like no other and the ultimate secret that could bring an end to everything.</p>
+				<p> Can one small boy defeat his inner demons in order to conquer the greatest demon of them all?</p>
+				<p>Follow Jack, on the adventure of two lifetimes.</p>
+			</div>
+			<div data-role="footer" style="overflow:hidden;" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-transition="slide">Homepage</a></li>
+						<li><a href="#clues" data-transition="slide">Clues!</a></li>
+						<li><a href="#mapPage" data-transition="slide">Map!</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+			</div>
+		</div>
+		
+		<div data-role="page" id="clues">
+			<div data-role="header" data-position="fixed">
+				<h1> MourneQuest! </h1>
+			</div>
+			<div id="clueList" data-role="controlgroup">
+			
+			</div>
+			<div data-role="footer" style="overflow:hidden;" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-transition="slide">Homepage</a></li>
+						<li><a href="#clues" data-transition="slide">Clues!</a></li>
+						<li><a href="#mapPage" data-transition="slide">Map!</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div><!-- /footer -->
+		</div>
+		
+		<div data-role="page" id="mapPage">
+			<div data-role="header" data-position="fixed">
+				<h1> MourneQuest! </h1>
+			</div>
+			<div id="map" style="width: 700px; height: 500px"></div>
+			<div class="text"></div>
+			<div data-role="footer" style="overflow:hidden;" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#home" data-transition="slide">Homepage</a></li>
+						<li><a href="#clues" data-transition="slide">Clues!</a></li>
+						<li><a href="#mapPage" data-transition="slide">Map!</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
