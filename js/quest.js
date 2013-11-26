@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	alert($(window).width());
 	/*
 		Global variables
 	*/
@@ -81,7 +82,7 @@ $(document).ready(function(){
 		append("#clueList ", "<li id=\""+index+"\" data-icon=\"false\"><a href=\"body #clue"+index+"\" data-rel=\"dialog\">"+clues.name+"</a> </li>");
 		updateColors(index);
 	}
-  
+	
 	function updateColors(index){
 		if(clues[index].done){
 			$("#clueList #" + index).attr("data-theme", "a");
@@ -102,20 +103,34 @@ $(document).ready(function(){
 	/*
 		Initializing leaflet.js
 	*/
+	$("#mapPlacement").html("<div id=\"map\" style=\"height: 500px\"></div>");
+	var imageUrl = 'img/Map.png',
+    	imageBounds = [[40, -60], [-85, 102]];
 	var map = L.map('map', {
-		center: [0,0],
-		zoom: 0
+		center: [40,-60],
+		zoom: 1,
+		minZoom: 1,
+		maxZoom: 6,
+		trackResize: false,
+		maxBounds: [[42, -62], [-85, 102]]
 	});
-	var id = 0;	
-	map.on('click', function(e) {
-		id++;
-		$(".text").append("<p>click["+id+"] = "+e.latlng.toString()+"</p>");
+	map.on("zoomend", function(){
+		var size = map.getZoom();
+		var pixToCord = 0.92 * 4;
+		var width = $("#map").width();
+		var height = 500;
+		map.setMaxBounds([[42, -62],[-82 + (height / (size * (pixToCord * 5))), 102 - (width / (size * pixToCord))]]);
+
 	});
+	//$(".text").toggle();
+	//map.fitBounds([[40, -60], [-85.28792, 102.65625]]);
+	//$("#map").width(width + 1);
+	//var id = 0;	
+	/*map.on('mousemove', function(e) {
+		$(".text").html("<p>"+e.latlng.toString()+"</p>");
+	});*/
 	
-	var imageUrl = '/Map.png',
-    imageBounds = [[28.30438, -108.28125], [-84.40594, 75.9375]];
 	L.imageOverlay(imageUrl, imageBounds).addTo(map);
-	
 	/*L.tileLayer('HighResCat/{z}/{x}/{y}.jpg', {
             minZoom: 0,
             maxZoom: 6,
@@ -132,8 +147,8 @@ $(document).ready(function(){
 	
 	function addClueMarker(marker, route){
 		marker.on('click', function(){
-      // location.href = "#clue"+route;
-      $.mobile.changePage( "#clue"+route, { role: "dialog"} );
+      			// location.href = "#clue"+route;
+      			$.mobile.changePage( "#clue"+route, { role: "dialog"} );
 		});
 	}
 });
