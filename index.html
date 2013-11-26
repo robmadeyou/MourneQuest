@@ -2,73 +2,101 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
-		<link rel="stylesheet" href="jquery.mob.css" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+		<link rel="stylesheet" href="css/jquery.mob.css" />
+		<link rel="stylesheet" href="css/mournequest.css" />
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
-		<script src="jquery.min.js"></script>
-		<script src="jquery.mob.js"></script>
+    
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.mob.js"></script>
 		<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
-		<script src="quest.js"></script>
+		<script src="js/quest.js"></script>
+    
+    <!-- Stop iOS jumping 1px on transition -->
+    <script>$(function() { $.mobile.defaultHomeScroll = 0; }); </script>
+    
 	</head>
 	<body>
-		<div data-role="page" id="home" align="center">
-			<div style="width: 400px;" align="left">
-			<div data-role="header" data-position="fixed">
-				<h1> MourneQuest! </h1>
-			</div>
-			
-			<div id="content">
-				<img src="cover.jpg"></img>
-				<p> Jack Turner’s most prized possession, has been snatched away from him and the only way of getting it back has been stolen. </p>
-				<p> He leaves his home in post-famine Ireland and stumbles upon an enchanted realm, long since forgotten by mankind and encounters a creature named Cobs,a kindred spirit, with a wit and wisdom far beyond his youthful appearance.</p>
-				<p> Together they embark on a quest, through the True Kingdom of Mourne; where the strange and wonderful inhabitants both help and hinder their path, rivers hide ancient tales, a mighty wall with a history like no other and the ultimate secret that could bring an end to everything.</p>
-				<p> Can one small boy defeat his inner demons in order to conquer the greatest demon of them all?</p>
-				<p>Follow Jack, on the adventure of two lifetimes.</p>
-			</div>
-			<div data-role="footer" style="overflow:hidden;" data-position="fixed">
-				<div data-role="navbar">
-					<ul>
-						<li><a href="#home" data-transition="slide">Homepage</a></li>
-						<li><a href="#clues" data-transition="slide">Clues!</a></li>
-						<li><a href="#mapPage" data-transition="slide">Map!</a></li>
-					</ul>
-				</div><!-- /navbar -->
-			</div><!-- /footer -->
-			</div>
+    
+		<div data-role="page" id="home">
+  			<div data-role="header">
+  				<h1>Newry & MourneQuest</h1>
+  			</div>
+				<img src="img/cobs.png" style="align:center;width:100%"></img>
+      
+  			<div data-role="content" id="content">
+          <p><b>Welcome to Newry & MourneQuest.</b></p>
+  				<p> Allow me to introduce myself -  I am Cosabian Brohan Hawksbeard, eighth son of Poitin Hawksbeard, 
+            The Great Hunter, Maker of Dreams, Third Lord of Caiserban and Bringer of the Nightfall Rainbow.</p>
+          <p>But because that is such a mouthful, you can call me Cobs. I am a Clurichaun, a dandelion hunter, 
+            and I was born on All Hallow's Eve, on the night of a full moon in the year 1411.</p> 
+          <p>Normally I dwell in a mansion within the Curraghard Tree in the True Kingdom of Mourne and the most 
+            beautiful of all the realms. It stretches from Annalong Wood to the Kissing Gate and from the Forests 
+            of Tollymore to the shores of Rostrevor where the rivers run clear and the hills are forever green.</p>
+          <p>I have come to your realm for I am in dire need of your help. The dreaded Shimnavore has captured my 
+            dearest friend Jack Turner. Jack is eleven years old and he is human like you, but he was born in 1836 
+            in Springwell Port. He is the second son of Martha and Matthew Turner and he has in his possession a 
+            most powerful secret - a secret the terrible Shimnavore will stop at nothing to obtain. Somehow, Jack 
+            and the Shimnavore have travelled through time and with some difficulty, I have been able to follow 
+            them all the way here to the City of the Yew - that which you call Newry. But the trail has grown cold 
+            and I need the eyes of a fresh young mind to help me in my Quest.</p> 
+          <p>Because I know Jack Turner well, I am sure he has left a clues to his whereabouts all over your 
+            wonderful city. I have a map but I am unsure where it leads. Will you join me on a journey and unlock 
+            the hidden secrets that Newry holds?</p>
+  			</div>
+
+  			<div data-role="footer" data-theme="a" style="overflow:hidden;" data-position="fixed">
+  				<div data-role="navbar">
+  					<ul class="nav-mq">
+  						<li><a href="#home" id="home-button" data-icon="custom" data-transition="none" class="ui-btn-active ui-state-persist">Home</a></li>
+  						<li><a href="#clues" id="clues-button" data-icon="custom" data-transition="none">Clues</a></li>
+  						<li><a href="#mapPage" id="map-button" data-icon="custom" data-transition="none">Map</a></li>
+  					</ul>
+  				</div><!-- /navbar -->
+  			</div><!-- /footer -->
+
 		</div>
 		
 		<div data-role="page" id="clues">
+      
 			<div data-role="header" data-position="fixed">
-				<h1> MourneQuest! </h1>
+				<h1>Newry & MourneQuest</h1>
 			</div>
-			<div id="clueList" data-role="controlgroup">
 			
-			</div>
-			<div data-role="footer" style="overflow:hidden;" data-position="fixed">
+      <ul id="clueList" data-role="listview">
+      </ul>
+			
+      <div data-role="footer" data-theme="a" style="overflow:hidden;" data-position="fixed">
 				<div data-role="navbar">
-					<ul>
-						<li><a href="#home" data-transition="slide">Homepage</a></li>
-						<li><a href="#clues" data-transition="slide">Clues!</a></li>
-						<li><a href="#mapPage" data-transition="slide">Map!</a></li>
+					<ul class="nav-mq">
+						<li><a href="#home" id="home-button" data-icon="custom" data-transition="none">Home</a></li>
+						<li><a href="#clues" id="clues-button" data-icon="custom" data-transition="none" class="ui-btn-active ui-state-persist">Clues</a></li>
+						<li><a href="#mapPage" id="map-button" data-icon="custom" data-transition="none">Map</a></li>
 					</ul>
 				</div><!-- /navbar -->
 			</div><!-- /footer -->
 		</div>
 		
 		<div data-role="page" id="mapPage">
+      
 			<div data-role="header" data-position="fixed">
-				<h1> MourneQuest! </h1>
+				<h1>Newry & MourneQuest</h1>
 			</div>
+      
 			<div id="map" style="width: 700px; height: 500px"></div>
 			<div class="text"></div>
+      
 			<div data-role="footer" style="overflow:hidden;" data-position="fixed">
 				<div data-role="navbar">
-					<ul>
-						<li><a href="#home" data-transition="slide">Homepage</a></li>
-						<li><a href="#clues" data-transition="slide">Clues!</a></li>
-						<li><a href="#mapPage" data-transition="slide">Map!</a></li>
+					<ul class="nav-mq">
+						<li><a href="#home" id="home-button" data-icon="custom" data-transition="none">Home</a></li>
+						<li><a href="#clues" id="clues-button" data-icon="custom" data-transition="none">Clues</a></li>
+						<li><a href="#mapPage" id="map-button" data-icon="custom" data-transition="none" class="ui-btn-active ui-state-persist">Map</a></li>
 					</ul>
 				</div>
 			</div>
+      
 		</div>
 	</body>
 </html>

@@ -9,19 +9,14 @@ $(document).ready(function(){
 	/*
 		Down here is the generating of clues and all that stuff
 	*/
-	clues[0] = {id: 0, name:"Treasure Chest", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
-	
-	
-	clues[3] = {id: 3, name:"Treasure Chest", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
-	clues[4] = {id: 4, name:"Treasure Chest", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
-	clues[5] = {id: 5, name:"Treasure Chest", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
-	clues[6] = {id: 6, name:"Treasure Chest", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
-	clues[7] = {id: 7, name:"Treasure Chest", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
-	clues[8] = {id: 8, name:"Treasure Chest", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
-	clues[9] = {id: 9, name:"Treasure Chest", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
-
+	clues[0] = {id: 0, name:"Wishing Chair", done:false, description:"In bronze this leaf holds the key<br>A wishing chair just made for me<br>The first of Betty's middle name<br>Will help the maker with my game", latlng: [-67.60922, -101.25]};
 	clues[1] = {id: 1, name:"Bucket of Treasure", done:false, description:"The bucket is somewhere, but can you find it and find out what is inside?!", latlng: [13.9234, -56.25]};
-	clues[2] = {id: 2, name:"Sea of the undead", done: false, description: "The sea of the undead hasn't been visited in over 200 years, will you be the first to see what's inside?", latlng: [-8.40717, 81.5625]};
+	clues[2] = {id: 2, name:"Sea of the undead", done: false, description: "The sea of the undead hasn't been visited in over 200 years, will you be the first to see what's inside?", latlng: [-8.40717, 81.5625]};	
+	clues[3] = {id: 3, name:"Sugar Island of Doom", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
+	clues[4] = {id: 4, name:"Toblerone of Terror", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
+	clues[5] = {id: 5, name:"Haunted Gallows", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
+	clues[6] = {id: 6, name:"Treasure Chest", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
+
 
 	function submit(input,index){
 		for(var	i = 0; i < answers.length; i++ ){
@@ -34,7 +29,7 @@ $(document).ready(function(){
 		clues[index].done = true;
 		answers.push({answer: input, clue: index, id: answers.length});
 		alert(clues[index].done);
-		$("#clueList #" + index).attr("data-theme", "a");
+		//$("#clueList #" + index).attr("data-theme", "a");
 		updateColors(index);
 	}
 	
@@ -42,21 +37,25 @@ $(document).ready(function(){
 		generateClues(clues[i], i);
 		generateCluesList(clues[i], i);
 	}
+	
+  for(var i = 0; i < 3; i++){
+   	$("#clueList #" + i).attr("data-icon", "check");
+  }
+  $("#clueList").trigger("create");
 
 	function generateClues(clues, index){
 		append("body", "<div id=\"clue"+index+"\" data-role=\"page\"></div>");
-		append("#clue"+index, "<div id=\"content\" align=\"center\"></div>");
+		append("#clue"+index, "<div data-role=\"content\" id =\"content\" align=\"center\"></div>");
 		append("#clue"+index+" #content", "<div data-role=\"header\" data-position=\"fixed\" id=\"head\"></div>");
-		append("#clue"+index+" #content #head","<h1>"+clues.name+"</h1>");
+		//  append("#clue"+index+" #content #head","<h1>"+clues.name+"</h1>");
 		append("#clue"+index+ " #content", "<div id=\"title\"></div>");
-		append("#clue"+index+" #content #title", "<img src=\"place.png\"> </img>");
-		append("#clue"+index+" #content #title", "<h2>"+clues.name+"</h2>");
+		//append("#clue"+index+" #content #title", "<img src=\"place.png\"> </img>");
+		append("#clue"+index+" #content #title", "<b>"+clues.name+"</b>");
 		append("#clue"+index+ " #content", "<p>"+clues.description+"</p>");
-		append("#clue"+index+ " #content #head", "<a href=\"#clues\" data-icon=\"arrow-l\" data-role=\"button\">Back</a>");
-	 	
+		//append("#clue"+index+ " #content #head", "<a href=\"#clues\" data-icon=\"arrow-l\" data-role=\"button\">Back</a>");
 		append("#clue"+index+" #content", "<input type=\"text\" name=\"text-basic\" id=\"text-basic\" value=\"Enter your answer here!\">");
 		append("#clue"+index+" #content","<div id=\"submit-answer\"data-role=\"controlgroup\" data-type=\"horizontal\" data-mini=\"true\">");
-		append("#clue"+index+" #content", "<input type=\"button\" value=\"Submit\" id=\"submitButton"+index+"\" data-theme=\"b\">");
+		append("#clue"+index+" #content", "<input type=\"button\" value=\"Submit\" id=\"submitButton"+index+"\" data-theme=\"b\"  data-mini=\"true\">");
 		
 		$("#clue" +index+" #content #text-basic").click(function(e){
 			$("#clue" +index+" #content #text-basic").val("");
@@ -78,9 +77,11 @@ $(document).ready(function(){
 	}
 
 	function generateCluesList(clues, index){
-		append("#clueList ", "<a href=\"body #clue"+index+"\" data-theme=\"\" id=\""+index+"\" data-role=\"button\">"+clues.name+"</a> </li>");
+    count = index+1;
+		append("#clueList ", "<li id=\""+index+"\" data-icon=\"false\"><a href=\"body #clue"+index+"\" data-rel=\"dialog\">"+clues.name+"</a> </li>");
 		updateColors(index);
 	}
+  
 	function updateColors(index){
 		if(clues[index].done){
 			$("#clueList #" + index).attr("data-theme", "a");
@@ -131,7 +132,8 @@ $(document).ready(function(){
 	
 	function addClueMarker(marker, route){
 		marker.on('click', function(){
-			location.href = "#clue"+route;
+      // location.href = "#clue"+route;
+      $.mobile.changePage( "#clue"+route, { role: "dialog"} );
 		});
 	}
 });
