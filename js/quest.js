@@ -104,7 +104,7 @@ $(document).ready(function(){
 		Initializing leaflet.js
 	*/
 	$("#mapPlacement").html("<div id=\"map\" style=\"height: 500px\"></div>");
-	var imageUrl = 'img/map2.png',
+	var imageUrl = 'img/map.png',
     	imageBounds = [[40, -60], [-85, 102]];
 	var map = L.map('map', {
 		center: [40,-94],

@@ -1,9 +1,9 @@
 /****** FOOTER STUFF ******/
 .nav-mq .ui-btn .ui-btn-inner { padding-top: 35px !important; font-family: stonehenge; font-size:90%;}
 .nav-mq .ui-btn .ui-icon { width: 50px!important; height: 25px!important; margin-left: -25px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: 0 !important; border-radius: 0 !important; }
-#home-button .ui-icon { background: url(home_icon.svg) 50% 50% no-repeat;}
-#clues-button .ui-icon { background: url(clues_icon.svg) 50% 50% no-repeat;}
-#map-button .ui-icon { background: url(map_icon.svg) 50% 50% no-repeat;}
+#home-button .ui-icon { background: url('icons/home_icon.svg') 50% 50% no-repeat;}
+#clues-button .ui-icon { background: url('icons/clues_icon.svg') 50% 50% no-repeat;}
+#map-button .ui-icon { background: url('icons/map_icon.svg') 50% 50% no-repeat;}
 /**************************/
 
 .ui-header .ui-title {
@@ -28,17 +28,8 @@ li a{
   background:transparent !important;
 }
 
-
-@font-face
-{
-font-family: stonecross;
-src: url('stonecross.ttf'),
-     url('Sansation_Light.eot'); /* IE9 */
-} 
-
 @font-face
 {
 font-family: stonehenge;
-src: url('stonehenge.ttf'),
-     url('Sansation_Light.eot'); /* IE9 */
+src: url('fonts/stonehenge.ttf'); /* IE9 */
 } 
