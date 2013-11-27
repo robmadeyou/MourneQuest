@@ -7,10 +7,10 @@
 /**************************/
 
 .ui-header .ui-title {
-    margin-right: 10%;
-    margin-left: 10%;
+    margin-right: 0%;
+    margin-left: 0%;
     font-family: stonehenge;
-    font-size:130%;
+    font-size:150%;
 }
 
 li a{
@@ -23,6 +23,11 @@ li a{
   font-family: stonehenge;
   font-size:130%;
 }
+
+.leaflet-container {
+  background:transparent !important;
+}
+
 
 @font-face
 {
