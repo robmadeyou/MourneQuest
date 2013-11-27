@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	alert($(window).width());
+	//alert($(window).width());
 	/*
 		Global variables
 	*/
@@ -10,13 +10,13 @@ $(document).ready(function(){
 	/*
 		Down here is the generating of clues and all that stuff
 	*/
-	clues[0] = {id: 0, name:"Wishing Chair", done:false, description:"In bronze this leaf holds the key<br>A wishing chair just made for me<br>The first of Betty's middle name<br>Will help the maker with my game", latlng: [-67.60922, -101.25]};
-	clues[1] = {id: 1, name:"Bucket of Treasure", done:false, description:"The bucket is somewhere, but can you find it and find out what is inside?!", latlng: [13.9234, -56.25]};
-	clues[2] = {id: 2, name:"Sea of the undead", done: false, description: "The sea of the undead hasn't been visited in over 200 years, will you be the first to see what's inside?", latlng: [-8.40717, 81.5625]};	
-	clues[3] = {id: 3, name:"Sugar Island of Doom", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
-	clues[4] = {id: 4, name:"Toblerone of Terror", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
-	clues[5] = {id: 5, name:"Haunted Gallows", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
-	clues[6] = {id: 6, name:"Treasure Chest", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -101.25]};
+	clues[0] = {id: 0, name:"Wishing Chair", done:false, description:"In bronze this leaf holds the key<br>A wishing chair just made for me<br>The first of Betty's middle name<br>Will help the maker with my game", latlng: [-45.40717, 10.5625]};
+	clues[1] = {id: 1, name:"Bucket of Treasure", done:false, description:"The bucket is somewhere, but can you find it and find out what is inside?!", latlng: [-56.9234, -29.25]};
+	clues[2] = {id: 2, name:"Sea of the Undead", done: false, description: "The sea of the undead hasn't been visited in over 200 years, will you be the first to see what's inside?", latlng: [-50.40717, 61.5625]};	
+	clues[3] = {id: 3, name:"Sugar Island of Doom", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-60.40717, 31.5625]};
+	clues[4] = {id: 4, name:"Toblerone of Terror", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-42.60922, 50.25]};
+	clues[5] = {id: 5, name:"Haunted Gallows", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-72.60922, 10.25]};
+	clues[6] = {id: 6, name:"Treasure Chest", done:false, description:"Find the treasure chest and hopefully it hasn't been looted before!", latlng: [-67.60922, -10.25]};
 
 
 	function submit(input,index){
@@ -79,15 +79,15 @@ $(document).ready(function(){
 
 	function generateCluesList(clues, index){
     count = index+1;
-		append("#clueList ", "<li id=\""+index+"\" data-icon=\"false\"><a href=\"body #clue"+index+"\" data-rel=\"dialog\">"+clues.name+"</a> </li>");
+		append("#clueList ", "<li id=\""+index+"\" data-icon=\"false\"><a href=\"body #clue"+index+"\" data-rel=\"dialog\" data-transition=\"pop\">"+clues.name+"</a> </li>");
 		updateColors(index);
 	}
 	
 	function updateColors(index){
 		if(clues[index].done){
-			$("#clueList #" + index).attr("data-theme", "a");
-		}else{
 			$("#clueList #" + index).attr("data-theme", "c");
+		}else{
+			$("#clueList #" + index).attr("data-theme", "a");
 		}
 	}
 	
@@ -104,22 +104,23 @@ $(document).ready(function(){
 		Initializing leaflet.js
 	*/
 	$("#mapPlacement").html("<div id=\"map\" style=\"height: 500px\"></div>");
-	var imageUrl = 'img/Map.png',
+	var imageUrl = 'img/map.png',
     	imageBounds = [[40, -60], [-85, 102]];
 	var map = L.map('map', {
-		center: [40,-60],
+		center: [40,-94],
 		zoom: 1,
 		minZoom: 1,
 		maxZoom: 6,
 		trackResize: false,
-		maxBounds: [[42, -62], [-85, 102]]
+    zoomControl:false,
+		maxBounds: [[30, -96], [100, 20]]
 	});
 	map.on("zoomend", function(){
 		var size = map.getZoom();
 		var pixToCord = 0.92 * 4;
 		var width = $("#map").width();
 		var height = 500;
-		map.setMaxBounds([[42, -62],[-82 + (height / (size * (pixToCord * 5))), 102 - (width / (size * pixToCord))]]);
+		map.setMaxBounds([[42, -94],[-82 + (height / (size * (pixToCord * 5))), 102 - (width / (size * pixToCord))]]);
 
 	});
 	//$(".text").toggle();
@@ -148,7 +149,7 @@ $(document).ready(function(){
 	function addClueMarker(marker, route){
 		marker.on('click', function(){
       			// location.href = "#clue"+route;
-      			$.mobile.changePage( "#clue"+route, { role: "dialog"} );
+      			$.mobile.changePage( "#clue"+route, { role: "dialog", transition: "pop"} );
 		});
 	}
 });

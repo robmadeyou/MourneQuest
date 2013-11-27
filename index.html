@@ -12,6 +12,8 @@
 		<script src="js/jquery.mob.js"></script>
 		<script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
 		<script src="js/quest.js"></script>
+    <script src="js/fastclick.js"></script>
+    
     
     <!-- Stop iOS jumping 1px on transition -->
     <script>$(function() { $.mobile.defaultHomeScroll = 0; }); </script>
@@ -19,18 +21,19 @@
 	</head>
 	<body>
     
-		<div data-role="page" id="home">
-  			<div data-role="header">
-  				<h1>Newry & MourneQuest</h1>
+		<div data-role="page" id="home" data-theme="a" data-content-theme="a">
+  			<div data-role="header" data-position="fixed" data-theme="a">
+  				<h1>Newry & MourneQuest</h1>        
   			</div>
-				<img src="img/cobs.png" style="align:center;width:100%"></img>
       
   			<div data-role="content" id="content">
-          <p><b>Welcome to Newry & MourneQuest.</b></p>
+          <img src="img/cobs.png" style="float:left;width:30%;padding:15px 15px 5px 5px"></img>
+          <p>Welcome to Newry & MourneQuest.</p>
   				<p> Allow me to introduce myself -  I am Cosabian Brohan Hawksbeard, eighth son of Poitin Hawksbeard, 
             The Great Hunter, Maker of Dreams, Third Lord of Caiserban and Bringer of the Nightfall Rainbow.</p>
-          <p>But because that is such a mouthful, you can call me Cobs. I am a Clurichaun, a dandelion hunter, 
-            and I was born on All Hallow's Eve, on the night of a full moon in the year 1411.</p> 
+          <p>But you can call me "Cobs".</p>
+          <p>I am a Clurichaun, a dandelion hunter, and I was born on All Hallow's Eve, on the night of a full 
+            moon in the year 1411.</p> 
           <p>Normally I dwell in a mansion within the Curraghard Tree in the True Kingdom of Mourne and the most 
             beautiful of all the realms. It stretches from Annalong Wood to the Kissing Gate and from the Forests 
             of Tollymore to the shores of Rostrevor where the rivers run clear and the hills are forever green.</p>
@@ -39,14 +42,14 @@
             in Springwell Port. He is the second son of Martha and Matthew Turner and he has in his possession a 
             most powerful secret - a secret the terrible Shimnavore will stop at nothing to obtain. Somehow, Jack 
             and the Shimnavore have travelled through time and with some difficulty, I have been able to follow 
-            them all the way here to the City of the Yew - that which you call Newry. But the trail has grown cold 
+            them all the way here to the City of the Yew - which you call Newry. But the trail has grown cold 
             and I need the eyes of a fresh young mind to help me in my Quest.</p> 
           <p>Because I know Jack Turner well, I am sure he has left a clues to his whereabouts all over your 
             wonderful city. I have a map but I am unsure where it leads. Will you join me on a journey and unlock 
             the hidden secrets that Newry holds?</p>
   			</div>
 
-  			<div data-role="footer" data-theme="a" style="overflow:hidden;" data-position="fixed">
+  			<div data-role="footer" data-theme="a" style="overflow:hidden;" data-position="fixed" data-tap-toggle="false" >
   				<div data-role="navbar">
   					<ul class="nav-mq">
   						<li><a href="#home" id="home-button" data-icon="custom" data-transition="none" class="ui-btn-active ui-state-persist">Home</a></li>
@@ -58,16 +61,15 @@
 
 		</div>
 		
-		<div data-role="page" id="clues">
+		<div data-role="page" id="clues" data-theme="a" data-content-theme="a">
       
 			<div data-role="header" data-position="fixed">
 				<h1>Newry & MourneQuest</h1>
 			</div>
 			
-      <ul id="clueList" data-role="listview">
-      </ul>
+      <ul id="clueList" data-role="listview" data-theme="a"></ul>
 			
-      <div data-role="footer" data-theme="a" style="overflow:hidden;" data-position="fixed">
+      <div data-role="footer" data-theme="a" style="overflow:hidden;" data-position="fixed" data-tap-toggle="false" >
 				<div data-role="navbar">
 					<ul class="nav-mq">
 						<li><a href="#home" id="home-button" data-icon="custom" data-transition="none">Home</a></li>
@@ -78,15 +80,15 @@
 			</div><!-- /footer -->
 		</div>
 		
-		<div data-role="page" id="mapPage">
-      
+		<div data-role="page" id="mapPage" data-theme="a" data-content-theme="a">
 			<div data-role="header" data-position="fixed">
-				<h1>Newry & MourneQuest</h1>
+				<h1>Newry & MourneQuest</h1>        
 			</div>
-     			<div class="text"></div> 
-			<div id="mapPlacement"></div>
       
-			<div data-role="footer" style="overflow:hidden;" data-position="fixed" id="footer" >
+     	<div class="text"></div> 
+        <div id="mapPlacement"></div>
+      
+			<div data-role="footer" style="overflow:hidden;" data-position="fixed" id="footer" data-tap-toggle="false" >
 				<div data-role="navbar">
 					<ul class="nav-mq">
 						<li><a href="#home" id="home-button" data-icon="custom" data-transition="none">Home</a></li>
